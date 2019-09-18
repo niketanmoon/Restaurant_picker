@@ -19,13 +19,15 @@ from django.views.generic import TemplateView
 
 from restaurants.views import (
     RestaurantListView,
+    RestaurantDetailView,
 )
 
 
 
 urlpatterns = [
     path('restaurants/',RestaurantListView.as_view()),
-    path('restaurants/<slug>/',RestaurantListView.as_view()),
+    # path('restaurants/<slug>/',RestaurantListView.as_view()),
+    path('restaurants/<rest_id>/',RestaurantDetailView.as_view()),
     path('about/',TemplateView.as_view(template_name = "about.html")),
     path('contact/',TemplateView.as_view(template_name = "contact.html")),
     path('admin/', admin.site.urls),
