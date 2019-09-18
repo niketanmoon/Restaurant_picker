@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>Home</h1>
+  <!-- {{html_var }}  is a context variable that comes through from the
+  views that contains context-->
+  <p>This is {% verbatim %}{{ html_var }}{% endverbatim %}</p>
+  <p>
+    {% if num is not None %}
+    Random Integer is {{ num }}
+    {% endif %}
+  </p>
+  <p>
+    {% for some_item in some_list %}
+      {% if some_item|divisibleby:'2' %}
+        Even Number :
+      {% endif %}
+      {{ some_item }}<br>
+    {% endfor %}
+  </p>
+{% endblock content %}

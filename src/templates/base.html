@@ -5,22 +5,14 @@
     <title></title>
   </head>
   <body>
-    <h1>Hello World</h1>
-    <!-- {{html_var }}  is a context variable that comes through from the
-  views that contains context-->
-  <p>This is {% verbatim %}{{ html_var }}{% endverbatim %}</p>
-    <p>
-      {% if num is not None %}
-      Random Integer is {{ num }}
-      {% endif %}
-    </p>
-    <p>
-      {% for some_item in some_list %}
-        {% if some_item|divisibleby:'2' %}
-          Even Number :
-        {% endif %}
-        {{ some_item }}<br>
-      {% endfor %}
-    </p>
+    <h1>Restaurant Picker</h1>
+    <a href="/">Home</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+    <div class="container">
+      {% block content %}
+      {% endblock content %}
+    </div>
+
   </body>
 </html>
