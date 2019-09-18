@@ -8,7 +8,18 @@
     <h1>Hello World</h1>
     <!-- {{html_var }}  is a context variable that comes through from the
   views that contains context-->
-    <p>This is {{ html_var }} coming through</p>
-    <p>Random Integer is {{ num }}</p>
+    <p>
+      {% if num is not None %}
+      Random Integer is {{ num }}
+      {% endif %}
+    </p>
+    <p>
+      {% for some_item in some_list %}
+        {% if some_item|divisibleby:'2' %}
+          Even Number :
+        {% endif %}
+        {{ some_item }}<br>
+      {% endfor %}
+    </p>
   </body>
 </html>

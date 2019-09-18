@@ -5,5 +5,18 @@ from django.http import HttpResponse
 
 #function based view
 def home(request):
-    num = random.randint(0,1000000000000)
-    return render(request,'base.html',{'html_var':'context variable','num':num })
+    num = None
+    some_list = [
+        random.randint(0,100000),
+        random.randint(0,100000),
+        random.randint(0,100000)
+    ]
+
+    condition_bool_item = True
+    if condition_bool_item:
+        num = random.randint(0,1000000000000)
+    context = {
+        'num':num,
+        'some_list':some_list
+    }
+    return render(request,'base.html',context)
