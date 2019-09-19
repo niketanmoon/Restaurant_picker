@@ -9,18 +9,23 @@ from restaurants.models import RestaurantLocation
 # Create your views here.
 
 def restaurant_createview(request):
-    if request.method == "POST":
-        name = request.POST.get("name")
-        location = request.POST.get("location")
-        category = request.POST.get("category")
+    form = RestaurantCreateForm(request.POST or None)
+    errors = None
+    if form.is_valid():
         obj = RestaurantLocation.objects.create(
-                name = name,
-                location = location,
-                category = category
+                name = form.cleaned_data.get("name"),
+                location = form.cleaned_data.get("location"),
+                category = form.cleaned_data.get("category")
             )
         return HttpResponseRedirect("/restaurants/")
+    if form.errors:
+        errors = form.errors
+
     template_name = 'restaurants/form.html'
-    context = {}
+    context = {
+        "form":form,
+        "errors":errors,
+    }
     return render(request,template_name,context)
 
 class RestaurantListView(ListView):
