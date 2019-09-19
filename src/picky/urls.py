@@ -28,12 +28,13 @@ from restaurants.views import (
 
 
 urlpatterns = [
-    path('restaurants/',RestaurantListView.as_view()),
+    path('restaurants/',RestaurantListView.as_view(),name='restaurants'),
     path('login/',LoginView.as_view(),name='login'),
     path('restaurants/create/',RestaurantCreateView.as_view()),
     #path('restaurants/create/',restaurant_createview),
     path('restaurants/<slug>/',RestaurantDetailView.as_view()),
-    path('about/',TemplateView.as_view(template_name = "about.html")),
-    path('contact/',TemplateView.as_view(template_name = "contact.html")),
+    path('',TemplateView.as_view(template_name = "home.html"),name='home'),
+    path('about/',TemplateView.as_view(template_name = "about.html"),name='about'),
+    path('contact/',TemplateView.as_view(template_name = "contact.html"),name='contact'),
     path('admin/', admin.site.urls),
 ]
