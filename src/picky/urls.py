@@ -24,6 +24,7 @@ from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path('restaurants/',include('restaurants.urls',namespace='restaurants')),
+    path('items/',include('menus.urls',namespace='menus')),
     path('login/',LoginView.as_view(),name='login'),
     path('',TemplateView.as_view(template_name = "home.html"),name='home'),
     path('about/',TemplateView.as_view(template_name = "about.html"),name='about'),

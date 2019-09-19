@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from restaurants.models import RestaurantLocation
 
 
@@ -25,6 +26,9 @@ class Item(models.Model):
 
     class Meta:
         ordering = ['-updated','-timestamp']
+
+    def get_absolute_url(self):
+        return reverse('menus:detail',kwargs={'pk':self.pk})
 
     def get_contents(self):
         return self.contents.split(",")
