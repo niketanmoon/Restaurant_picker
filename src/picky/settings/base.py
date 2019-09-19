@@ -53,6 +53,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'picky.urls'
+LOGIN_URL = '/login/'
 
 TEMPLATES = [
     {
