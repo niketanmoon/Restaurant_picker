@@ -1,5 +1,6 @@
 from django.conf import settings
 from django.db import models
+from django.urls import reverse
 from django.db.models.signals import pre_save
 from .utils import unique_slug_generator
 
@@ -26,6 +27,9 @@ class RestaurantLocation(models.Model):
     @property
     def title(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('restaurant-detail',kwargs={'slug':self.slug})
 
 def rl_pre_save_receiver(sender,instance,*args,**kwargs):
     instance.category = instance.category.capitalize()
