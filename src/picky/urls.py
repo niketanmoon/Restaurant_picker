@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
+from django.contrib.auth.views import LoginView
 
 from restaurants.views import (
     RestaurantListView,
@@ -28,6 +29,7 @@ from restaurants.views import (
 
 urlpatterns = [
     path('restaurants/',RestaurantListView.as_view()),
+    path('login/',LoginView.as_view(),name='login'),
     path('restaurants/create/',RestaurantCreateView.as_view()),
     #path('restaurants/create/',restaurant_createview),
     path('restaurants/<slug>/',RestaurantDetailView.as_view()),
