@@ -12,7 +12,6 @@ class RestaurantLocation(models.Model):
     owner       = models.ForeignKey(
                     User,
                     on_delete = models.CASCADE,
-                    related_name="restaurant_records"
                 )
     name        = models.CharField(max_length = 120)
     location    = models.CharField(max_length = 120, null=True, blank=True)
