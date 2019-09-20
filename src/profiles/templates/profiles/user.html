@@ -4,6 +4,7 @@
 
 {% block content %}
 <h1>{{ user.username }}</h1>
+{% include 'profiles/snippet/follow_form.html' with username=user.username is_following=is_following%}
 <form class="form" action="." method="GET">
   <input type="text" name="q" placeholder="Search.." value='{{ request.GET.q }}'>
   <button class='btn btn-primary' type="submit">Search</button>
