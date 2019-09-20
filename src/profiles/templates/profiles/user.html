@@ -7,16 +7,23 @@
 <hr>
 {% if user.item_set.all.exists %}
 {% for rest in user.restaurantlocation_set.all %}
-  <li><b>{{ rest.title }}</b> | {{ rest.location }} | {{ rest.category }}</li>
-  <br>
-  <b>Items</b>
-  <ul>
-    {% for item in rest.item_set.all %}
-    <li style="margin-bottom:15px;"> {{ item.name }} <br>
-      {% for ing in item.get_contents%}
-      <span style="padding:2px 4px; margin-right:4px; background-color:#ccc;">{{ ing }}</span>
-      {% endfor %}
-    </li>
+<div class="row">
+  <div class="col-sm-12">
+      <div class="card card-default">
+          <h4>{{ rest.title }}</h4> {{ rest.location }} | {{ rest.category }}
+        <br>
+        <ul>
+          {% for item in rest.item_set.all %}
+          <li style="margin-bottom:15px;"> <b>{{ item.name }}</b> <br>
+            Contains:
+            {% for ing in item.get_contents%}
+            <span style="padding:2px 4px; margin-right:4px; background-color:#ccc;">{{ ing }}</span>
+            {% endfor %}
+          </li>
+        </div>
+    </div>
+    </div>
+    <hr>
     {% endfor %}
   </ul>
 {% endfor %}
