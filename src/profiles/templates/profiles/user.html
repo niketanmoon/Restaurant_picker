@@ -14,14 +14,16 @@
 <div class="row">
   <div class="col-sm-12">
       <div class="card card-default">
-          <h4>{{ rest.title }}</h4> {{ rest.location }} | {{ rest.category }}
+          <h4>{{ rest.title }}</h4>
+          <p><a href="{{request.path}}?q={{ rest.location }}">{{ rest.location }}</a>
+          <a href="{{request.path}}?q={{ rest.category }}">{{ rest.category }}</a></p>
         <br>
         <ul>
           {% for item in rest.item_set.all %}
           <li style="margin-bottom:15px;"> <b>{{ item.name }}</b> <br>
             Contains:
             {% for ing in item.get_contents%}
-            <span style="padding:2px 4px; margin-right:4px; background-color:#ccc;">{{ ing }}</span>
+            <a href="{{request.path}}?q={{ing}}">{{ ing }}</a>
             {% endfor %}
           </li>
           </ul>
