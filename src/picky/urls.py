@@ -16,9 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from django.views.generic import TemplateView
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView,LogoutView
 
-from profiles.views import ProfileFollowToggle
+from profiles.views import ProfileFollowToggle, RegisterView
 from menus.views import HomeView
 
 urlpatterns = [
@@ -27,6 +27,8 @@ urlpatterns = [
     path('u/',include('profiles.urls',namespace='profiles')),
     path('profile-follow/',ProfileFollowToggle.as_view(),name='follow'),
     path('login/',LoginView.as_view(),name='login'),
+    path('logout/',LogoutView.as_view(),name='logout'),
+    path('register/',RegisterView.as_view(),name='register'),
     path('',HomeView.as_view(),name='home'),
     path('about/',TemplateView.as_view(template_name = "about.html"),name='about'),
     path('contact/',TemplateView.as_view(template_name = "contact.html"),name='contact'),
