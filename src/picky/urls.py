@@ -18,7 +18,7 @@ from django.urls import path,include
 from django.views.generic import TemplateView
 from django.contrib.auth.views import LoginView,LogoutView
 
-from profiles.views import ProfileFollowToggle, RegisterView
+from profiles.views import ProfileFollowToggle, RegisterView,activate_user_view
 from menus.views import HomeView
 
 urlpatterns = [
@@ -29,6 +29,7 @@ urlpatterns = [
     path('login/',LoginView.as_view(),name='login'),
     path('logout/',LogoutView.as_view(),name='logout'),
     path('register/',RegisterView.as_view(),name='register'),
+    path('activate/<code>',activate_user_view,name="activate"),
     path('',HomeView.as_view(),name='home'),
     path('about/',TemplateView.as_view(template_name = "about.html"),name='about'),
     path('contact/',TemplateView.as_view(template_name = "contact.html"),name='contact'),
